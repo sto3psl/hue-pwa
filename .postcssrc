@@ -1,0 +1,10 @@
+{
+  "modules": true,
+  "plugins": {
+    "cssnext": {},
+    "cssnano": {},
+    "autoprefixer": {
+      "grid": true
+    }
+  }
+}

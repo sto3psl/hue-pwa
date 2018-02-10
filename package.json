@@ -1,0 +1,46 @@
+{
+  "name": "hue-pwa",
+  "version": "1.0.0",
+  "description": "Small web application to control Philips Hue light bulbs.",
+  "repository": "https://github.com/sto3psl/hue-pwa",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./",
+    "preserve": "npm run build",
+    "serve": "serve dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "standard": {
+    "env": "browser"
+  },
+  "browserslist": [
+    "last 1 Chrome versions"
+  ],
+  "keywords": [
+    "philips",
+    "hue",
+    "pwa",
+    "preact"
+  ],
+  "author": "Fabian Gündel",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "~7.2.6",
+    "babel-plugin-transform-object-rest-spread": "~6.26.0",
+    "babel-preset-env": "~1.6.1",
+    "babel-preset-preact": "~1.1.0",
+    "cssnano": "~3.10.0",
+    "cssnext": "~1.8.4",
+    "parcel-bundler": "~1.5.1",
+    "postcss": "~6.0.17",
+    "postcss-cssnext": "~3.1.0",
+    "postcss-modules": "~1.1.0",
+    "serve": "~6.4.9",
+    "standard": "~10.0.3"
+  },
+  "dependencies": {
+    "preact": "8.2.7",
+    "sanitize.css": "5.0.0"
+  }
+}

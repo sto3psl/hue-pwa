@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": true,
+        "modules": false,
+        "exclude": ["transform-regenerator"]
+      }
+    ],
+    "preact"
+  ],
+  "plugins": [
+    ["transform-object-rest-spread", {
+      "useBuiltIns": true
+    }]
+  ]
+}
