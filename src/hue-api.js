@@ -6,6 +6,10 @@ export async function getLights () {
   return fetch(`${url}/lights`).then(lights => lights.json())
 }
 
+export async function getSensors () {
+  return fetch(`${url}/sensors`).then(sensors => sensors.json())
+}
+
 export async function setLightState (light, state) {
   return fetch(`${url}/lights/${light}/state`,
     {

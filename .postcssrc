@@ -1,10 +1,9 @@
 {
   "modules": true,
   "plugins": {
-    "cssnext": {},
-    "cssnano": {},
-    "autoprefixer": {
-      "grid": true
-    }
+    "postcss-cssnext": {
+      "warnForDuplicates": false
+    },
+    "cssnano": {}
   }
 }

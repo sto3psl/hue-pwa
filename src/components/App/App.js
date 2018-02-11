@@ -1,61 +1,67 @@
 /** @jsx h */
 import { h, Component } from 'preact'
 import * as api from '../../hue-api'
-import './app.css'
+import styles from './app.css'
+import background from '../../img/bg.jpg'
+
+import Light from '../Light/Light'
+import Sensor from '../Sensor/Sensor'
 
 export default class App extends Component {
   constructor () {
     super()
 
     this.state = {
-      lights: []
+      lights: {},
+      sensors: {}
     }
+
+    this.getLights = this.getLights.bind(this)
+    this.getSensors = this.getSensors.bind(this)
   }
 
-  async componentDidMount () {
+  componentDidMount () {
+    this.getLights()
+    this.getSensors()
+  }
+
+  async getLights () {
     const lights = await api.getLights()
     this.setState(() => ({ lights }))
   }
 
+  async getSensors () {
+    const sensors = await api.getSensors()
+    this.setState(() => ({ sensors }))
+  }
+
   render () {
+    const { lights, sensors } = this.state
+
     return (
       <div id='app'>
-        <h1>💡💡💡</h1>
-        <ul>
-          {Object.keys(this.state.lights)
+        <img class={styles.background} src={background} alt='background' />
+        <header class={styles.header}>
+          <h1 class={styles.title}>Home</h1>
+        </header>
+        <div class={styles.devices}>
+          {Object.keys(lights)
             .sort()
             .map(index => (
-              <li key={this.state.lights[index].id}>
-                <button
-                  onClick={() => {
-                    api.setLightState(index, { on: !this.state.lights[index].state.on })
-                    this.setState(prevState => ({
-                      lights: {
-                        ...prevState.lights,
-                        [index]: {
-                          ...prevState.lights[index],
-                          state: {
-                            ...prevState.lights[index].state,
-                            on: !prevState.lights[index].state.on
-                          }
-                        }
-                      }
-                    }))
-                  }}
-                >
-                  <span
-                    style={{
-                      filter: this.state.lights[index].state.on ? null : 'grayscale(100%)'
-                    }}
-                  >
-                    💡
-                  </span>
-
-                  {this.state.lights[index].name}
-                </button>
-              </li>
+              <Light
+                getLights={this.getLights}
+                key={index}
+                id={index}
+                light={lights[index]}
+              />
             ))}
-        </ul>
+          {Object.keys(sensors)
+            .filter(index => sensors[index].type === 'ZLLTemperature')
+            .sort()
+            .map(index => (
+              <Sensor sensor={sensors[index]} />
+            ))}
+        </div>
       </div>
     )
   }

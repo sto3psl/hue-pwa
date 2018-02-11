@@ -1,0 +1,7 @@
+{
+  "short_name": "My Lights",
+  "name": "My Lights",
+  "display": "standalone",
+  "icons": [],
+  "start_url": "/index.html?launcher=true"
+}

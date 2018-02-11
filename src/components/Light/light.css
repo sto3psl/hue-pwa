@@ -1,0 +1,24 @@
+.light {
+  z-index: 1;
+  display: grid;
+  position: relative;
+  justify-items: center;
+  align-items: center;
+  appearance: none;
+  outline: none;
+  border: none;
+  white-space: pre;
+  padding: 0;
+  width: var(--item);
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(20px);
+  font-weight: inherit;
+  color: white;
+  background-color: #f4f4f433;
+}
+
+.lightOn {
+  composes: light;
+  color: #333;
+  background-color: #ffffff;
+}
